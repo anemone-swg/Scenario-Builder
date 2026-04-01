@@ -1,0 +1,14 @@
+:root {
+    /* шрифты */
+    --font-main: "Roboto", "Arial";
+
+    /* настройка скролла */
+    --scrollbar-thumb: rgb(255 255 255 / 30%);
+    --scrollbar-thumb-hover: rgb(255 255 255 / 50%);
+
+    /* цвет заднего фона */
+    --background-color: #212121;
+
+    /* цвет текста */
+    --text-color: #FFF;
+}
