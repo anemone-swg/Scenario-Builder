@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "@/app/App";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ScenariosPage } from "@/pages/ScenariosPage";
+import { ScenarioEditorPage } from "@/pages/ScenarioEditorPage";
 import { Routes } from "@/shared/config/route/routes";
 
 export const routesConfig = [
@@ -14,32 +15,10 @@ export const routesConfig = [
         index: true,
         element: <ScenariosPage />,
       },
-      // {
-      //   path: Routes.MOVIES,
-      //   element: <MoviesPage />,
-      //   children: [
-      //     {
-      //       index: true,
-      //       element: <MoviesLogic />,
-      //     },
-      //     {
-      //       path: Routes.MOVIES_SEARCH,
-      //       element: (
-      //         <Suspense fallback={<Loader />}>
-      //           <MoviesSearchPage />,
-      //         </Suspense>
-      //       ),
-      //     },
-      //     {
-      //       path: Routes.MOVIES_SEARCH_DETAIL,
-      //       element: (
-      //         <Suspense fallback={<Loader />}>
-      //           <MovieDetailsPage />
-      //         </Suspense>
-      //       ),
-      //     },
-      //   ],
-      // },
+      {
+        path: Routes.SCENARIO,
+        element: <ScenarioEditorPage />,
+      },
     ],
   },
 ];
