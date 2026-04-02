@@ -1,5 +1,13 @@
+import { ScenariosList } from "@/widgets/ScenariosList";
+import { ScenariosListHeader } from "@/widgets/ScenariosListHeader";
+
 const ScenariosPage = () => {
-  return <div>list of scenarios</div>;
+  return (
+    <>
+      <ScenariosListHeader />
+      <ScenariosList />
+    </>
+  );
 };
 
 export default ScenariosPage;
