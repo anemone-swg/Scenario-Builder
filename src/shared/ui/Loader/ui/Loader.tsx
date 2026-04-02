@@ -1,5 +1,5 @@
 import { ClipLoader } from "react-spinners";
-import type { ComponentProps } from "react";
+import { type ComponentProps, memo } from "react";
 import clsx from "clsx";
 import styles from "./Loader.module.css";
 
@@ -15,4 +15,4 @@ const Loader = ({ className, ...otherProps }: LoaderProps) => {
   );
 };
 
-export default Loader;
+export default memo(Loader);

@@ -3,13 +3,11 @@ import App from "@/app/App";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ScenariosPage } from "@/pages/ScenariosPage";
 import { Routes } from "@/shared/config/route/routes";
-import { Loader } from "@/shared/ui/Loader";
 
 export const routesConfig = [
   {
     path: Routes.SCENARIOS,
     element: <App />,
-    loader: Loader,
     errorElement: <NotFoundPage />,
     children: [
       {

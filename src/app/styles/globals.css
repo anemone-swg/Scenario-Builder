@@ -1,6 +1,11 @@
 @import "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap";
 @import "tailwindcss";
 
+@theme {
+    --background-color-button: #2B7FFF;
+    --background-color-button-hover: #1A5FCC;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
