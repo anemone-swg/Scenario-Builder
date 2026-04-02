@@ -11,4 +11,15 @@
 
     /* цвет текста */
     --text-color: #FFF;
+
+    /* цвет кнопки */
+    --background-color-button: #2B7FFF;
+    --background-color-button-hover: #1A5FCC;
+
+    /* цвет карточки */
+    --background-color-card: #262C36;
+    --background-color-card-hover: #323b46;
+
+    /* цвет рамки */
+    --border-color: #696969;
 }
