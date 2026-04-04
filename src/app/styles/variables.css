@@ -8,9 +8,12 @@
 
     /* цвет заднего фона */
     --background-color: #212121;
+    --background-color-second: #d0d0d0;
 
     /* цвет текста */
     --text-color: #FFF;
+    --text-color-second: #212121;
+    --text-color-red: red;
 
     /* цвет кнопки */
     --background-color-button: #2B7FFF;
@@ -22,4 +25,7 @@
 
     /* цвет рамки */
     --border-color: #696969;
+
+    /* цвет инпута */
+    --input-color: #3B82F6;
 }

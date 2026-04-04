@@ -8,4 +8,11 @@ export const GLOBAL_TEXT = {
   delete_scenario: "Удалить сценарий",
   page_not_found: "Страница не найдена",
   back_to_list: "Назад к списку",
+  script_editor: "Редактор сценария",
+  action: "Действие",
+  new_action: "Новое действие",
+  action_desc: "Описание действия",
+  condition: "Условие",
+  new_condition: "Новое условие",
+  condition_desc: "Описание условия",
 };
