@@ -1,12 +1,22 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { type Scenario } from "../types/scenario.ts";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
+import type {CustomNode} from "@/entities/Node";
+import {type Scenario} from "../types/scenario.ts";
+import type {CustomEdge} from "@/entities/Edge";
 
 interface IScenarioState {
   scenarios: Scenario[];
+
+  updateScenarioFlow: (
+    id: string,
+    nodes: CustomNode[],
+    edges: CustomEdge[],
+  ) => void;
+
   loadScenarios(scenarios: Scenario[]): void;
+
   addScenario(scenarioResult: Scenario): Scenario;
-  updateScenario(id: string, scenarioResult: Scenario): Scenario;
+
   removeScenario(id: string): void;
 }
 
@@ -27,19 +37,23 @@ export const useScenarioStore = create<IScenarioState>()(
         return scenarioResult;
       },
 
-      updateScenario: (id: string, scenarioResult: Scenario) => {
-        set((state) => ({
-          scenarios: state.scenarios.map((scenario) =>
-            scenario.id === id ? scenarioResult : scenario,
-          ),
-        }));
-
-        return scenarioResult;
-      },
-
       removeScenario: (id: string) => {
         set((state) => ({
           scenarios: state.scenarios.filter((scenario) => scenario.id !== id),
+        }));
+      },
+
+      updateScenarioFlow: (
+        id: string,
+        nodes: CustomNode[],
+        edges: CustomEdge[],
+      ) => {
+        set((state) => ({
+          scenarios: state.scenarios.map((scenario) =>
+            scenario.id === id
+              ? { ...scenario, nodes, edges, updatedAt: new Date() }
+              : scenario,
+          ),
         }));
       },
     }),
