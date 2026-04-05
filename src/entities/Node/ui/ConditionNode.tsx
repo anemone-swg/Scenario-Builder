@@ -1,54 +1,18 @@
-import { memo, useCallback } from "react";
-import { Handle, type NodeProps, Position, useReactFlow } from "@xyflow/react";
-import type { ConditionNodeData } from "../model/types/nodeType.ts";
+import { memo } from "react";
+import { Handle, type NodeProps, Position } from "@xyflow/react";
+import { MdClose } from "react-icons/md";
 import { Button } from "@/shared/ui/Button";
 import { EditableText } from "@/shared/ui/EditableText";
-import { MdClose } from "react-icons/md";
+import type { ConditionNodeData } from "../model/types/nodeType.ts";
+import { useNodeActions } from "../lib/hooks/useNodeActions.ts";
 
 const ConditionNode = ({
   data,
   selected,
   id,
 }: NodeProps<ConditionNodeData>) => {
-  const { deleteElements, setNodes, getNodes } = useReactFlow();
-
-  const handleDelete = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    await deleteElements({ nodes: [{ id }] });
-  };
-
-  const updateNodeData = useCallback(
-    (updates: Partial<ConditionNodeData["data"]>) => {
-      const nodes = getNodes();
-      const updatedNodes = nodes.map((node) =>
-        node.id === id
-          ? {
-              ...node,
-              data: {
-                ...node.data,
-                ...updates,
-              },
-            }
-          : node,
-      );
-      setNodes(updatedNodes);
-    },
-    [id, getNodes, setNodes],
-  );
-
-  const handleSaveLabel = useCallback(
-    (newLabel: string) => {
-      updateNodeData({ label: newLabel });
-    },
-    [updateNodeData],
-  );
-
-  const handleSaveDescription = useCallback(
-    (newDescription: string) => {
-      updateNodeData({ description: newDescription });
-    },
-    [updateNodeData],
-  );
+  const { handleDelete, handleSaveLabel, handleSaveDescription } =
+    useNodeActions<ConditionNodeData>(id);
 
   return (
     <div className="relative">
