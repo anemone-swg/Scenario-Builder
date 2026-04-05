@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { SaveScenariosBtn } from "@/features/SaveScenariosBtn";
+import { SaveScenarioBtn } from "@/features/SaveScenarioBtn";
 import { Button } from "@/shared/ui/Button";
 import { Routes } from "@/shared/config/route/routes";
 import { GLOBAL_TEXT } from "@/shared/config/texts/globalTexts.ts";
@@ -32,7 +32,7 @@ const EditorNavbar = ({ error, scenarioName }: EditorNavbarProps) => {
     <>
       <div className="mb-4 flex justify-between">
         <Button onClick={handleNavigate}>{GLOBAL_TEXT.back_to_list}</Button>
-        <SaveScenariosBtn />
+        <SaveScenarioBtn />
       </div>
       <h1 className="text-2xl font-bold mb-4">
         {GLOBAL_TEXT.script_editor}: {scenarioName}
