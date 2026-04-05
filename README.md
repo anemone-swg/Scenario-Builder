@@ -3,6 +3,7 @@
 ## 🚀 Демо
 
 [https://react-flow-scenario-builder.netlify.app/](#)
+Необходим впн для запуска
 
 ## 🚀 Запуск проекта
 
