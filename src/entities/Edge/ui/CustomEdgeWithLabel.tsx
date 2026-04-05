@@ -46,9 +46,9 @@ const CustomEdgeWithLabel = ({
     targetPosition,
   });
 
-  const handleDelete = (e: React.MouseEvent) => {
+  const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    deleteElements({ edges: [{ id }] });
+    await deleteElements({ edges: [{ id }] });
   };
 
   return (

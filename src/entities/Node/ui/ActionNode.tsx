@@ -8,9 +8,9 @@ import type { ActionNodeData } from "../model/types/nodeType.ts";
 const ActionNode = ({ data, selected, id }: NodeProps<ActionNodeData>) => {
   const { deleteElements, setNodes, getNodes } = useReactFlow();
 
-  const handleDelete = (e: React.MouseEvent) => {
+  const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    deleteElements({ nodes: [{ id }] });
+    await deleteElements({ nodes: [{ id }] });
   };
 
   const updateNodeData = useCallback(
