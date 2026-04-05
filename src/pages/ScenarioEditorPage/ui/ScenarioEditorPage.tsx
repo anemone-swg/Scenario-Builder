@@ -1,23 +1,21 @@
-import {useCallback, useMemo} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import { useCallback, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import {
-    addEdge,
-    applyEdgeChanges,
-    applyNodeChanges,
-    Background,
-    Controls,
-    type OnConnect,
-    type OnEdgesChange,
-    type OnNodesChange,
-    ReactFlow,
+  addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
+  Background,
+  Controls,
+  type OnConnect,
+  type OnEdgesChange,
+  type OnNodesChange,
+  ReactFlow,
 } from "@xyflow/react";
-import {AddNodeMenu} from "@/features/AddNodeMenu";
-import {useScenarioStore} from "@/entities/Scenario";
-import {ActionNode, ConditionNode, type CustomNode} from "@/entities/Node";
-import {type CustomEdge, CustomEdgeWithLabel} from "@/entities/Edge";
-import {Button} from "@/shared/ui/Button";
-import {Routes} from "@/shared/config/route/routes";
-import {GLOBAL_TEXT} from "@/shared/config/texts/globalTexts.ts";
+import { AddNodeMenu } from "@/features/AddNodeMenu";
+import { useScenarioStore } from "@/entities/Scenario";
+import { ActionNode, ConditionNode, type CustomNode } from "@/entities/Node";
+import { type CustomEdge, CustomEdgeWithLabel } from "@/entities/Edge";
+import { EditorNavbar } from "@/widgets/EditorNavbar";
 
 const nodeTypes = {
   action: ActionNode,
@@ -30,7 +28,6 @@ const edgeTypes = {
 
 const ScenarioEditorPage = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { scenarios, updateScenarioFlow } = useScenarioStore();
 
   const scenario = useMemo(() => {
@@ -45,7 +42,6 @@ const ScenarioEditorPage = () => {
 
   const nodes = useMemo(() => scenario?.nodes || [], [scenario]);
   const edges = useMemo(() => scenario?.edges || [], [scenario]);
-  const scenarioName = scenario?.name || "";
 
   const onNodesChange: OnNodesChange<CustomNode> = useCallback(
     (changes) => {
@@ -85,29 +81,12 @@ const ScenarioEditorPage = () => {
   );
 
   if (error) {
-    return (
-      <div className="mb-4">
-        <Button onClick={() => navigate(Routes.SCENARIOS)}>
-          {GLOBAL_TEXT.back_to_list}
-        </Button>
-        <p className="text-center text-(--text-color-red) text-lg mb-4">
-          {error}
-        </p>
-      </div>
-    );
+    return <EditorNavbar error={error} />;
   }
 
   return (
     <>
-      <div className="mb-4">
-        <Button onClick={() => navigate(Routes.SCENARIOS)}>
-          {GLOBAL_TEXT.back_to_list}
-        </Button>
-      </div>
-      <h1 className="text-2xl font-bold mb-4">
-        {GLOBAL_TEXT.script_editor}: {scenarioName}
-      </h1>
-      <hr className="mb-4" />
+      <EditorNavbar scenarioName={scenario?.name} />
       <div className={"flex justify-center"}>
         <div
           style={{ width: "80vw", height: "80vh" }}
