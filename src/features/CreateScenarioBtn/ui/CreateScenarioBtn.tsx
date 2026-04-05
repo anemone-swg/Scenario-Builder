@@ -1,9 +1,9 @@
 import { memo, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { MdAdd } from "react-icons/md";
 import { createScenarioApi, useScenarioStore } from "@/entities/Scenario";
 import { Button } from "@/shared/ui/Button";
 import { GLOBAL_TEXT } from "@/shared/config/texts/globalTexts.ts";
-import { MdAdd } from "react-icons/md";
 
 const CreateScenarioBtn = () => {
   const { addScenario } = useScenarioStore();

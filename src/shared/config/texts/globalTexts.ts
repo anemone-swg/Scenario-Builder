@@ -15,4 +15,5 @@ export const GLOBAL_TEXT = {
   condition: "Условие",
   new_condition: "Новое условие",
   condition_desc: "Описание условия",
+  save: "Сохранить",
 };
